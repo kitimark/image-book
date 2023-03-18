@@ -6,6 +6,7 @@
       "ESNext",
       "dom"
     ],
+    "noEmit": false,
     "outDir": "dist",
     "jsx": "react",
     "sourceMap": true,
@@ -16,7 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "isolatedModules": true,
   },
+  "exclude": ["examples"]
 }
