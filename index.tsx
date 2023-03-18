@@ -1,4 +1,4 @@
-const React = require('react')
+import React from 'react'
 
 const Lib = () => {
   return (
@@ -6,4 +6,4 @@ const Lib = () => {
   )
 }
 
-module.exports = Lib
+export default Lib

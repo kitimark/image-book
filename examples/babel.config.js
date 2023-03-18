@@ -1,5 +1,6 @@
 module.exports = {
   presets: [
+    '@babel/preset-typescript',
     [
       '@babel/preset-env', 
       {
@@ -15,7 +16,8 @@ module.exports = {
       {
         alias: {
           'image-book': '../'
-        }
+        },
+        transformFunctions: ['require', 'require.context'],
       }
     ]
   ]  

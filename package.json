@@ -1,12 +1,16 @@
 {
   "name": "image-book",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "index.tsx",
   "license": "MIT",
   "scripts": {
-    "build": "babel index.js --out-dir dist --copy-files"
+    "build": "yarn build:types && yarn build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel index.tsx --out-dir dist --extensions \".ts,.tsx\" --source-maps"
   },
   "dependencies": {
+    "core-js": "^3.29.1",
     "react": "^18.2.0"
   },
   "devDependencies": {
@@ -14,7 +18,10 @@
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/react": "^18.0.28",
     "babel-core": "^6.26.3",
-    "babel-loader": "^9.1.2"
+    "babel-loader": "^9.1.2",
+    "typescript": "^5.0.2"
   }
 }
