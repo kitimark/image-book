@@ -1,5 +1,7 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import Lib from 'image-book'
+import ReactDOM from 'react-dom/client'
+import App from './App'
 
-ReactDOM.render(<div><Lib /></div>, document.getElementById('app'))
+ReactDOM
+  .createRoot(document.getElementById('app')!)
+  .render(<App />)
