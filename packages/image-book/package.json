@@ -1,8 +1,24 @@
 {
   "name": "image-book",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "main": "index.tsx",
   "license": "MIT",
+  "description": "React component that display images like pdf reader",
+  "keywords": [
+    "react",
+    "react-component",
+    "image",
+    "pdf",
+    "reader"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kitimark/image-book",
+    "directory": "packages/image-book"
+  },
+  "bugs": {
+    "url": "https://github.com/kitimark/image-book/issues"
+  },
   "scripts": {
     "build": "webpack --mode production"
   },

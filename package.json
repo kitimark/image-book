@@ -1,8 +1,6 @@
 {
   "name": "@image-book/root",
   "version": "1.0.0",
-  "type": "commonjs",
-  "main": "index.tsx",
   "license": "MIT",
   "private": true,
   "scripts": {
