@@ -15,7 +15,7 @@ module.exports = {
       'babel-plugin-module-resolver',
       {
         alias: {
-          'image-book': '../'
+          'image-book': '../packages/image-book'
         },
         transformFunctions: ['require', 'require.context'],
       }

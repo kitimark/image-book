@@ -1,13 +1,10 @@
 {
-  "name": "@image-book/root",
+  "name": "image-book",
   "version": "1.0.0",
-  "type": "commonjs",
-  "main": "index.tsx",
+  "main": "index.js",
   "license": "MIT",
-  "private": true,
   "scripts": {
-    "build": "yarn workspace image-book build",
-    "dev": "yarn workspace examples dev"
+    "build": "webpack --mode production"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
@@ -27,8 +24,14 @@
     "webpack-cli": "^5.0.1",
     "webpack-node-externals": "^3.0.0"
   },
-  "workspaces": [
-    "examples",
-    "packages/*"
-  ]
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "core-js": "^3.29.1",
+    "lodash.debounce": "^4.0.8"
+  }
 }
