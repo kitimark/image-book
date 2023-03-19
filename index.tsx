@@ -9,6 +9,7 @@ import React, {
   useState,
 } from 'react';
 import { Property } from 'csstype';
+import styled from '@emotion/styled';
 import debounce from 'lodash.debounce';
 
 interface IImageBookContext {
@@ -24,6 +25,26 @@ const ImageBookContext = createContext<IImageBookContext>({
   imageUrls: [],
   currentPageIndex: 0,
 });
+
+type LayoutContainerProps = {
+  show?: boolean
+}
+
+const LayoutContainer = styled('div')<LayoutContainerProps>(({ show }) => ({
+  opacity: show ? 1 : 0,
+  transition: 'opacity',
+  transitionDuration: '500ms',
+  transitionTimingFunction: 'cubic-bezier(0.4, 0. 0.2. 1)',
+  position: 'absolute',
+  transform: 'translateX(-50%)',
+  left: '50%',
+  marginTop: '1rem',
+  padding: '0.5rem 1rem',
+  borderRadius: '0.25rem',
+  backgroundColor: 'rgba(255, 255, 255, .5)',
+  backdropFilter: 'blur(16px)',
+  WebkitBackdropFilter: 'blur(16px)',
+}))
 
 const Layout = () => {
   const { imageUrls, currentPageIndex, scrollRef } =
@@ -50,28 +71,23 @@ const Layout = () => {
   }, [scrollRef]);
 
   return (
-    <div
-      style={{
-        opacity: showLayout ? 1 : 0,
-        transition: 'opacity',
-        transitionDuration: '500ms',
-        transitionTimingFunction: 'cubic-bezier(0.4, 0. 0.2. 1)',
-        position: 'absolute',
-        transform: 'translateX(-50%)',
-        left: '50%',
-        marginTop: '1rem',
-        padding: '0.5rem 1rem',
-        borderRadius: '0.25rem',
-        backgroundColor: 'rgba(255, 255, 255, .5)',
-        backdropFilter: 'blur(16px)',
-      }}
-    >
+    <LayoutContainer show={showLayout}>
       <span>
         {currentPageIndex} / {imageUrls.length}
       </span>
-    </div>
+    </LayoutContainer>
   );
 };
+
+const ImageRenderContainer = styled('div')(() => ({
+  width: '100%',
+  height: '100%',
+  overflow: 'scroll',
+}))
+
+const Image = styled('img')(() => ({
+  width: '100%',
+}))
 
 const ImagesRender = () => {
   const { initialPage, scrollRef, imageUrls } = useContext(ImageBookContext);
@@ -95,23 +111,15 @@ const ImagesRender = () => {
   }, [scrollRef, imageLoadCount]);
 
   return (
-    <div
-      ref={scrollRef}
-      style={{
-        width: '100%',
-        height: '100%',
-        overflow: 'scroll',
-      }}
-    >
+    <ImageRenderContainer ref={scrollRef}>
       {imageUrls.map((url, i) => (
-        <img
+        <Image
           key={i}
-          style={{ width: '100%' }}
           src={url}
           onLoad={() => setImageLoadCount((c) => c + 1)}
         />
       ))}
-    </div>
+    </ImageRenderContainer>
   );
 };
 
