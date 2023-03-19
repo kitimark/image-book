@@ -18,7 +18,7 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "paths": {
-      "image-book": ["../"]
+      "image-book": ["../packages/image-book"]
     }
   },
 }
