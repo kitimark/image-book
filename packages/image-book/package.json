@@ -1,7 +1,11 @@
 {
   "name": "image-book",
-  "version": "0.0.1",
-  "main": "index.tsx",
+  "version": "0.0.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "description": "React component that display images like pdf reader",
   "keywords": [
@@ -20,7 +24,8 @@
     "url": "https://github.com/kitimark/image-book/issues"
   },
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
