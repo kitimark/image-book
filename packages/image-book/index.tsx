@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useRef,
   useState,
+  ImgHTMLAttributes,
 } from 'react';
 import { Property } from 'csstype';
 import styled from '@emotion/styled';
@@ -98,17 +99,20 @@ const ImagesRender = () => {
       return;
     }
 
-    const children = Array.from(scrollRef.current.children);
-    let scrollTo = 0;
-    for (let i = 0; i < initialPage - 1; i++) {
-      scrollTo += children[i].clientHeight;
-    }
+    // HARDCODE: debounce wait for image start fetching
+    debounce(() => {
+      const children = Array.from(scrollRef.current?.children ?? []);
+      let scrollTo = 0;
+      for (let i = 0; i < initialPage - 1; i++) {
+        scrollTo += children[i].clientHeight;
+      }
 
-    scrollRef.current.scroll({
-      top: scrollTo,
-      behavior: 'smooth',
-    });
-  }, [scrollRef, imageLoadCount]);
+      scrollRef.current?.scroll({
+        top: scrollTo,
+        behavior: 'smooth',
+      });
+    }, 1000)()
+  }, [scrollRef]);
 
   return (
     <ImageRenderContainer ref={scrollRef}>
